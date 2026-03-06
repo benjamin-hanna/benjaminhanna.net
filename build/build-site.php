@@ -53,7 +53,7 @@ if (!is_dir($pubImgs)) {
     mkdir($pubImgs, 0755, true);
 }
 
-shell_exec("cp -r ../posts/img/ ../public/posts/");
+shell_exec("cp ../posts/img/posts/* ../public/posts/img/posts/");
 
 $posts = __DIR__ . '/../posts';
 
