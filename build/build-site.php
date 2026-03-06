@@ -1,8 +1,20 @@
 <?php
-
+require '../vendor/autoload.php';
 require_once '../src/includes/base.php';
 
+function render($file, $params) {
+    ob_start();
+
+    renderPage($file, $params);
+
+    return ob_get_clean();
+}
+
 $public = __DIR__ . '/../public';
+
+/**
+ *  Start delete public folder contents
+ */
 
 if (!is_dir($public)) {
     mkdir($public, 0755, true);
@@ -21,20 +33,55 @@ if (!is_dir($public)) {
 
     mkdir($public, 0755, true);
 }
+/**
+ *  End delete public folder contents
+ */
 
-$assets = __DIR__ . '/../public/assets/css';
+/**
+ *  Start .md to .html conversion
+ */
+
+$pubPosts = __DIR__ . '/../public/posts';
+
+if (!is_dir($pubPosts)) {
+    mkdir($pubPosts, 0755, true);
+}
+
+$pubImgs = __DIR__ . '/../public/posts/img/posts';
+
+if (!is_dir($pubImgs)) {
+    mkdir($pubImgs, 0755, true);
+}
+
+shell_exec("cp -r ../posts/img/ ../public/posts/");
+
+$posts = __DIR__ . '/../posts';
+
+$files = array_filter(scandir($posts), fn($f) => substr($f, -3) === '.md');
+
+foreach ($files as $f) {
+    $Parsedown = new Parsedown();
+
+    $md = file_get_contents($posts . '/' . $f);
+
+    $html = $Parsedown->text($md);
+
+    $out = basename($f, '.md') . '.html';
+
+    file_put_contents('../public/posts/' . $out, $html);
+    file_put_contents('../public/posts/' .$out, render('../public/posts/' .$out, ['title' => 'Post']));
+}
+/**
+ *  End .md to .html coversion
+ */
+
+$assets = __DIR__ . '/../public/assets';
 
 if (!is_dir($assets)) {
     mkdir($assets, 0755, true);
 }
 
-shell_exec("cp -r ../src/assets/css/ ../public/assets/css/");
-
-$posts = __DIR__ . '/../public/posts';
-
-if (!is_dir($posts)) {
-    mkdir($posts, 0755, true);
-}
+shell_exec("cp -r ../src/assets/css/ ../public/assets/");
 
 $scripts = __DIR__ . '/../public/assets/scripts';
 
@@ -42,16 +89,7 @@ if (!is_dir($scripts)) {
     mkdir($scripts, 0755, true);
 }
 
-shell_exec("cp -r ../src/assets/scripts/ ../public/assets/scripts/");
-
-
-function render($file, $params) {
-    ob_start();
-
-    renderPage($file, $params);
-
-    return ob_get_clean();
-}
+shell_exec("cp -r ../src/assets/scripts/ ../public/assets/");
 
 file_put_contents('../public/index.html', render('../src/content/about.html', ['title' => 'About']));
 file_put_contents('../public/now.html', render('../src/content/now.html', ['title' => 'Now']));
@@ -59,11 +97,4 @@ file_put_contents('../public/colophon.html', render('../src/content/colophon.htm
 file_put_contents('../public/contact.html', render('../src/content/contact.html', ['title' => 'Contact']));
 file_put_contents('../public/posts.html', render('../src/content/posts.html', ['title' => 'Posts']));
 
-$posts = __DIR__ . '/../src/posts';
-$files = array_filter(scandir($posts), fn($f) => substr($f, -5) === '.html');
-
-foreach ($files as $f) {
-    file_put_contents('../public/posts/' . $f, render('../src/posts/' . $f, ['title' => 'Post']));
-}
-
-shell_exec("./deploy-prod.sh");
+// shell_exec("./deploy-prod.sh");

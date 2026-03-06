@@ -4,7 +4,7 @@
 <ul>
 <?php
 
-$posts = __DIR__ . '/../posts';
+$posts = __DIR__ . '/../../public/posts';
 $files = array_filter(scandir($posts), fn($f) => substr($f, -5) === '.html');
 $slugs = array_map(fn($f) => basename($f, '.html'), $files);
 
