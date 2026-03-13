@@ -1,5 +1,7 @@
 {
     "require": {
-        "erusev/parsedown": "^1.8"
+        "erusev/parsedown": "^1.8",
+        "erusev/parsedown-extra": "^0.9.0",
+        "mihaeu/html-formatter": "*"
     }
 }

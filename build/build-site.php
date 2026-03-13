@@ -47,6 +47,7 @@ $files = array_filter(scandir($posts), fn($f) => substr($f, -3) === '.md');
 
 foreach ($files as $f) {
     $Parsedown = new Parsedown();
+    $Parsedown = new ParsedownExtra(); 
 
     $md = file_get_contents($posts . '/' . $f);
 
@@ -89,7 +90,16 @@ if (!is_dir($scripts)) {
 shell_exec("cp -r ../src/assets/scripts/ ../public/assets/");
 
 file_put_contents('../public/index.html', render('../src/content/about.html', ['title' => 'About']));
+shell_exec("tidy -mi -utf8 --show-errors 0 ../public/index.html | htmlcs --standard=HTML5 - 2>&1");
+
 file_put_contents('../public/now.html', render('../src/content/now.html', ['title' => 'Now']));
+shell_exec("tidy -mi -utf8 --show-errors 0 ../public/now.html | htmlcs --standard=HTML5 - 2>&1");
+
 file_put_contents('../public/colophon.html', render('../src/content/colophon.html', ['title' => 'Colophon']));
+shell_exec("tidy -mi -utf8 --show-errors 0 ../public/colophon.html | htmlcs --standard=HTML5 - 2>&1");
+
 file_put_contents('../public/contact.html', render('../src/content/contact.html', ['title' => 'Contact']));
+shell_exec("tidy -mi -utf8 --show-errors 0 ../public/contact.html | htmlcs --standard=HTML5 - 2>&1");
+
 file_put_contents('../public/posts.html', render('../src/content/posts.html', ['title' => 'Posts']));
+shell_exec("tidy -mi -utf8 --show-errors 0 ../public/posts.html | htmlcs --standard=HTML5 - 2>&1");
