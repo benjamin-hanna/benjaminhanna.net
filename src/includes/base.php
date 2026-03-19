@@ -1,10 +1,7 @@
 <?php
-function renderPage($file, $params = [])
+
+function renderPage($file, $title)
 {
-    extract($params);
-
-    $title = $params['title'];
-
     if ($title === 'Post') {
         include 'postHeader.html';
     } else {

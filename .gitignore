@@ -6,3 +6,6 @@ vendor/
 
 # Site content
 public/
+
+# Blog posts
+blog/

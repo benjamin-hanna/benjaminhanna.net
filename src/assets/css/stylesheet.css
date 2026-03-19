@@ -23,7 +23,8 @@ footer .twelve.columns {
     width: 120px;
     height: auto;
 }
-hr { margin: 1.5em auto;
+hr { 
+  margin: 1.5em auto;
   border: 0;
   border-bottom-width: 0px;
   border-bottom-style: none;

@@ -2,6 +2,7 @@
     "require": {
         "erusev/parsedown": "^1.8",
         "erusev/parsedown-extra": "^0.9.0",
-        "mihaeu/html-formatter": "*"
+        "mihaeu/html-formatter": "*",
+        "symfony/yaml": "^7.4"
     }
 }
