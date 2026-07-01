@@ -58,6 +58,10 @@ pages:
     dest: contact.html
     title: Contact
     template: page.html.twig
+  - src: content/pages/ai.md
+    dest: ai.html
+    title: AI
+    template: page.html.twig
 
 posts: content/posts
 
