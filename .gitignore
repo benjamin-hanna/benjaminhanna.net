@@ -1,6 +1,9 @@
 # OS files
 .DS_Store
 
+# Sublime
+*sublime*
+
 # PHP
 vendor/
 
@@ -9,3 +12,9 @@ public/
 
 # Site source content
 content/
+
+# Site data
+data/
+*.db
+*journal
+*wal
