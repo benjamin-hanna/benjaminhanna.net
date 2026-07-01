@@ -45,6 +45,11 @@ foreach ($config['pages'] as $pages) {
     copy($pages['src'], "$outputDir/{$pages['dest']}");
 }
 
+foreach ($config['files'] as $files) {
+    // print_r($files);
+    copy($files['src'], "$outputDir/{$files['dest']}");
+}
+
 /*
 * Base page build
 */

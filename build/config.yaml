@@ -33,6 +33,10 @@ assets:
   - src: content/pages/src/maps/taipei.png
     dest: assets/img/maps/taipei.png
 
+files:
+  - src: src/files/robots.txt
+    dest: robots.txt
+
 pages:
   - src: content/pages/about.md 
     dest: index.html
