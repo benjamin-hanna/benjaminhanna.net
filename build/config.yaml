@@ -4,6 +4,7 @@ directories:
   - assets/css
   - assets/img
   - assets/img/maps
+  - assets/img/shoes
   - posts/src
   - posts/img
 
@@ -32,6 +33,12 @@ assets:
     dest: assets/img/maps/seattle.png
   - src: content/pages/src/maps/taipei.png
     dest: assets/img/maps/taipei.png
+  - src: content/pages/src/maps/ireland.png
+    dest: assets/img/maps/ireland.png
+  - src: content/pages/src/shoes/columbia.png
+    dest: assets/img/shoes/columbia.png
+  - src: content/pages/src/shoes/altra.png
+    dest: assets/img/shoes/altra.png
 
 files:
   - src: src/files/robots.txt
@@ -49,6 +56,10 @@ pages:
   - src: content/pages/maps.md
     dest: maps.html
     title: Maps
+    template: page.html.twig
+  - src: content/pages/shoes.md
+    dest: shoes.html
+    title: Shoes
     template: page.html.twig
   - src: content/pages/colophon.md 
     dest: colophon.html
