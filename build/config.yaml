@@ -7,6 +7,11 @@ directories:
   - assets/img/shoes
   - posts/src
   - posts/img
+  - scripts
+
+app:
+  - src: src/index.php
+    dest: index.php
 
 assets:
   - src: src/assets/css/stylesheet.css
@@ -39,6 +44,10 @@ assets:
     dest: assets/img/shoes/columbia.png
   - src: content/pages/src/shoes/altra.png
     dest: assets/img/shoes/altra.png
+
+scripts:
+  - src: src/scripts/trap.php
+    dest: scripts/trap.php
 
 files:
   - src: src/files/robots.txt

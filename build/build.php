@@ -41,12 +41,19 @@ foreach ($config['assets'] as $asset) {
     copy($asset['src'], "$outputDir/{$asset['dest']}");
 }
 
+foreach ($config['app'] as $app) {
+    copy($app['src'], "$outputDir/{$app['dest']}");
+}
+
 foreach ($config['pages'] as $pages) {
     copy($pages['src'], "$outputDir/{$pages['dest']}");
 }
 
+foreach ($config['scripts'] as $scripts) {
+    copy($scripts['src'], "$outputDir/{$scripts['dest']}");
+}
+
 foreach ($config['files'] as $files) {
-    // print_r($files);
     copy($files['src'], "$outputDir/{$files['dest']}");
 }
 
