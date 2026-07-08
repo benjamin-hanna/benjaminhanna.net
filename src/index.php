@@ -7,6 +7,13 @@ if ($path === '') {
 }
 else {
 	$file = __DIR__ . "/{$path}.html";
+    // echo $file;
 }
 
-readfile($file);
+if (file_exists($file)) {
+    readfile($file);
+} else {
+    $file = __DIR__ . "/error.html";
+    readfile($file);
+    die();
+}

@@ -4,7 +4,7 @@
 <ul>
     {% for slug in slugs %}
     <li>
-        <a href="posts/{{ slug | url_encode }}.html">{{ slug }}</a>
+        <a href="posts/{{ slug | url_encode }}">{{ slug }}</a>
     </li>
     {% endfor %}
 </ul>

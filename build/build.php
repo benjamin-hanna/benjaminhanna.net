@@ -78,10 +78,6 @@ foreach ($config['pages'] as $page) {
 /*
 * Blog index and content build
 */
-// foreach ($config['posts_src'] as $postSrc) {
-//     copy($postSrc['src'], "$outputDir/{$postSrc['dest']}");
-// }
-
 $posts = $config['posts'];
 
 $files = array_filter(scandir($posts), fn ($f) => str_ends_with($f, '.md'));
@@ -111,5 +107,5 @@ foreach ($files as $f) {
         'depth'   => 1,
     ]);
 
-    file_put_contents($dest, $output); // missing
+    file_put_contents($dest, $output);
 }

@@ -5,6 +5,7 @@ directories:
   - assets/img
   - assets/img/maps
   - assets/img/shoes
+  - assets/img/favicons
   - posts/src
   - posts/img
   - scripts
@@ -18,8 +19,12 @@ assets:
     dest: assets/css/stylesheet.css
   - src: src/assets/css/skeleton.css
     dest: assets/css/skeleton.css
-  - src: src/assets/img/favicon.png
-    dest: assets/img/favicon.png
+  - src: src/assets/img/favicons/favicon-16x16.png
+    dest: assets/img/favicons/favicon-16x16.png
+  - src: src/assets/img/favicons/favicon-32x32.png
+    dest: assets/img/favicons/favicon-32x32.png
+  - src: src/assets/img/favicons/favicon-96x96.png
+    dest: assets/img/favicons/favicon-96x96.png
   - src: src/assets/img/hero.webp
     dest: assets/img/hero.webp
   - src: src/assets/img/openbsd-logo.svg
@@ -44,10 +49,8 @@ assets:
     dest: assets/img/shoes/columbia.png
   - src: content/pages/src/shoes/altra.png
     dest: assets/img/shoes/altra.png
-
-scripts:
-  - src: src/scripts/trap.php
-    dest: scripts/trap.php
+  - src: src/assets/img/mm.jpg
+    dest: assets/img/mm.jpg
 
 files:
   - src: src/files/robots.txt
@@ -82,13 +85,15 @@ pages:
     dest: ai.html
     title: AI
     template: page.html.twig
+  - src: content/pages/error.md
+    dest: error.html
+    title: Error
+    template: page.html.twig
 
 posts: content/posts
 
-posts_src:
-
 post_index:
   src: src/pages/posts.html
-  dest: posts.html
+  dest: posts
   title: Posts
   template: posts.html.twig

@@ -49,3 +49,8 @@ img {
 a {
   text-decoration: none;
 }
+.four.columns img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
