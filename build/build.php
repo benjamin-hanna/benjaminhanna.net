@@ -90,7 +90,7 @@ $output = $twig->render('posts.html.twig', [
     'depth'  => 1
 ]);
 
-file_put_contents($outputDir . '/pages/posts.html', $output);
+file_put_contents($outputDir . '/pages/blog.html', $output);
 
 foreach ($files as $f) {
     $md = file_get_contents($posts . '/' . $f);
