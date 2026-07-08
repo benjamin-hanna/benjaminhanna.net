@@ -6,8 +6,8 @@ directories:
   - assets/img/maps
   - assets/img/shoes
   - assets/img/favicons
-  - posts/src
-  - posts/img
+  - posts
+  - pages
   - scripts
 
 app:
@@ -58,35 +58,35 @@ files:
 
 pages:
   - src: content/pages/about.md 
-    dest: index.html
+    dest: pages/index.html
     title: About
     template: page.html.twig
   - src: content/pages/now.md
-    dest: now.html
+    dest: pages/now.html
     title: Now
     template: page.html.twig
   - src: content/pages/maps.md
-    dest: maps.html
+    dest: pages/maps.html
     title: Maps
     template: page.html.twig
   - src: content/pages/shoes.md
-    dest: shoes.html
+    dest: pages/shoes.html
     title: Shoes
     template: page.html.twig
   - src: content/pages/colophon.md 
-    dest: colophon.html
+    dest: pages/colophon.html
     title: Colophon
     template: colophon.html.twig
   - src: content/pages/contact.md
-    dest: contact.html
+    dest: pages/contact.html
     title: Contact
     template: page.html.twig
   - src: content/pages/ai.md
-    dest: ai.html
+    dest: pages/ai.html
     title: AI
     template: page.html.twig
   - src: content/pages/error.md
-    dest: error.html
+    dest: pages/error.html
     title: Error
     template: page.html.twig
 

@@ -1,19 +1,27 @@
 <?php
 $path = trim($_SERVER['REQUEST_URI'], '/');
+$segments = explode('/', $path);
 $file = '';
 
 if ($path === '') {
-	$file = __DIR__ . "/index.html";
+	$file = __DIR__ . "/pages/index.html";
 }
 else {
-	$file = __DIR__ . "/{$path}.html";
-    // echo $file;
+    if (in_array('posts', $segments, true)) {
+        if (end($segments) === 'posts') {
+            $file = __DIR__ . "/pages/{$path}.html";
+        } else {
+            $file = __DIR__ . "/{$path}.html";
+        }   
+    } else {
+	   $file = __DIR__ . "/pages/{$path}.html";
+    }
 }
 
 if (file_exists($file)) {
     readfile($file);
 } else {
-    $file = __DIR__ . "/error.html";
-    readfile($file);
-    die();
+    http_response_code(404);
+    readfile(__DIR__ . "/pages/error.html");
+    exit();
 }

@@ -90,12 +90,12 @@ $output = $twig->render('posts.html.twig', [
     'depth'  => 1
 ]);
 
-file_put_contents($outputDir . '/posts.html', $output);
+file_put_contents($outputDir . '/pages/posts.html', $output);
 
 foreach ($files as $f) {
     $md = file_get_contents($posts . '/' . $f);
     $html = $parsedown->text($md);
-    $dest = "$outputDir/posts/" . basename($f, '.md') . '.html';
+    $dest = "$outputDir/posts/" . basename($f, '.md') . '';
     $depth = substr_count($dest, '/') - 1;
     $root = $depth > 0 ? str_repeat('../', $depth) : 0;
 
