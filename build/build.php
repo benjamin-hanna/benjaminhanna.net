@@ -95,9 +95,9 @@ file_put_contents($outputDir . '/pages/blog.html', $output);
 foreach ($files as $f) {
     $md = file_get_contents($posts . '/' . $f);
     $html = $parsedown->text($md);
-    $dest = "$outputDir/posts/" . basename($f, '.md') . '';
+    $dest = "$outputDir/posts/" . basename($f, '.md') . '.html';
     $depth = substr_count($dest, '/') - 1;
-    $root = $depth > 0 ? str_repeat('../', $depth) : 0;
+    $root = $depth > 0 ? str_repeat('/', $depth) : 0;
 
     $output = $twig->render('post.html.twig', [
         'content' => $html,

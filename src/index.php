@@ -1,4 +1,12 @@
 <?php
+if (php_sapi_name() === 'cli-server') {
+    $ext = pathinfo(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), PATHINFO_EXTENSION);
+    $staticExts = ['css', 'js', 'png', 'jpg', 'svg', 'ico', 'txt', 'webp'];
+    if (in_array($ext, $staticExts, true)) {
+        return false;
+    }
+}
+
 $path = trim($_SERVER['REQUEST_URI'], '/');
 $segments = explode('/', $path);
 $file = '';
