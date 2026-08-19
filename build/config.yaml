@@ -89,6 +89,10 @@ pages:
     dest: pages/error.html
     title: Error
     template: page.html.twig
+  - src: content/pages/quotes.md
+    dest: pages/quotes.html
+    title: Quotes
+    template: page.html.twig
 
 posts: content/posts
 
