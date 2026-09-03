@@ -2,9 +2,9 @@
 
 {% block content %}
 <ul>
-    {% for slug in slugs %}
+    {% for post in slugs %}
     <li>
-        <a href="/posts/{{ slug | url_encode }}">{{ slug }}</a>
+        <a href="/posts/{{ post.slug }}">{{ post.title }}</a>
     </li>
     {% endfor %}
 </ul>

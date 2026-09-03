@@ -8,7 +8,6 @@ directories:
   - assets/img/favicons
   - posts
   - pages
-  - scripts
 
 app:
   - src: src/index.php

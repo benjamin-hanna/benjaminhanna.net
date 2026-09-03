@@ -49,10 +49,6 @@ foreach ($config['pages'] as $pages) {
     copy($pages['src'], "$outputDir/{$pages['dest']}");
 }
 
-foreach ($config['scripts'] as $scripts) {
-    copy($scripts['src'], "$outputDir/{$scripts['dest']}");
-}
-
 foreach ($config['files'] as $files) {
     copy($files['src'], "$outputDir/{$files['dest']}");
 }
@@ -79,23 +75,41 @@ foreach ($config['pages'] as $page) {
 * Blog index and content build
 */
 $posts = $config['posts'];
+$files = array_values(array_filter(scandir($posts), fn ($f) => str_ends_with($f, '.md')));
+$titles = array_map(fn($f) => basename($f, '.md'), $files);
 
-$files = array_filter(scandir($posts), fn ($f) => str_ends_with($f, '.md'));
-$slugs = array_map(fn($f) => basename($f, '.md'), $files);
+$slugs = array_map(function($title) {
+    $slug = iconv('UTF-8', 'ASCII//TRANSLIT', $title);
+    $slug = strtolower($slug);
+    $slug = preg_replace('/[^a-z0-9\s-]/', '', $slug);
+    $slug = preg_replace('/[\s-]+/', '-', $slug);
+    $slug = trim($slug, '-');
+
+    return [
+        'title' => $title,
+        'slug'  => $slug,
+    ];
+}, $titles);
 
 $output = $twig->render('posts.html.twig', [
-    'slugs'  => $slugs,
-    'title'  => 'Posts',
-    'dest'   => 'posts.html',
-    'depth'  => 1
+'slugs'  => $slugs,
+'title'  => 'Posts',
+'dest'   => 'posts.html',
+'depth'  => 1
 ]);
 
 file_put_contents($outputDir . '/pages/blog.html', $output);
 
-foreach ($files as $f) {
+foreach ($files as $f) {;
     $md = file_get_contents($posts . '/' . $f);
     $html = $parsedown->text($md);
-    $dest = "$outputDir/posts/" . basename($f, '.md') . '.html';
+
+    $title = basename($f, '.md');
+    $match = array_filter($slugs, fn($s) => $s['title'] === $title);
+    $slug = $match ? array_values($match)[0]['slug'] : null;
+
+    $dest = "$outputDir/posts/" . $slug . '.html';
+
     $depth = substr_count($dest, '/') - 1;
     $root = $depth > 0 ? str_repeat('/', $depth) : 0;
 
