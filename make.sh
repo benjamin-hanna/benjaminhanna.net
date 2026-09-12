@@ -22,11 +22,11 @@ fi
 
 verbose=""
 
-while getopts "bdvh" opt; do
+while getopts "bd:svh" opt; do
     case "$opt" in
         b) php "$SITE_ROOT/build/build.php" $verbose
            bash "$SITE_ROOT/build/tidy.sh" "$SITE_ROOT/public" ;;
-        d) bash "$SITE_ROOT/build/deploy.sh" "$SITE_ROOT/public" ;;
+        d) bash "$SITE_ROOT/build/deploy.sh" "$SITE_ROOT/public" "$OPTARG" ;;
         s) bash "$SITE_ROOT/build/sync-httpd-conf.sh" "$SITE_ROOT/httpd" ;;
         v) verbose="-v" ;;
         h) usage ;;

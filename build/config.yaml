@@ -60,10 +60,6 @@ pages:
     dest: pages/index.html
     title: About
     template: page.html.twig
-  - src: content/pages/now.md
-    dest: pages/now.html
-    title: Now
-    template: page.html.twig
   - src: content/pages/maps.md
     dest: pages/maps.html
     title: Maps
@@ -76,9 +72,9 @@ pages:
     dest: pages/colophon.html
     title: Colophon
     template: colophon.html.twig
-  - src: content/pages/contact.md
-    dest: pages/contact.html
-    title: Contact
+  - src: content/pages/href.md
+    dest: pages/href.html
+    title: Href
     template: page.html.twig
   - src: content/pages/ai.md
     dest: pages/ai.html
